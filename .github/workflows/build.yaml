@@ -1,0 +1,26 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install texlive
+        run: sudo apt install texlive-base 
+      - name: Install texlive-latex-extra
+        run: sudo apt-get install texlive-latex-extra
+      - name: Build pdf
+        run: pdflatex resume.tex
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v3
+        with: 
+          commit-message: automated build
+          branch: pdflatex_build
+          title: '[CI] pdflatex build'
