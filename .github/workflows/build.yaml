@@ -18,6 +18,8 @@ jobs:
         run: sudo apt-get install texlive-latex-extra
       - name: Build pdf
         run: pdflatex resume.tex
+      - name: Keep only pdf
+        run: rm *.aux *.log *.out
       - name: Create pull request
         uses: peter-evans/create-pull-request@v3
         with: 
