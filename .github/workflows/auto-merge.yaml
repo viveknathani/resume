@@ -5,6 +5,3 @@ jobs:
     steps:
       - name: Merge
         uses: KeisukeYamashita/auto-pull-request-merge@v1
-        with:
-          intervalSeconds: 10
-          timeoutSeconds: 30
